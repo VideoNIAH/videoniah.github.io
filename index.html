@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> VideoNIAH </title>
+
+  <link rel="icon" href="./static/images/icon.png">
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/css/leaderboard.css">
+  <link rel="stylesheet" href="./static/css/video-player.css">
+
+  <script type="text/javascript" src="static/js/sort-table.js" defer></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/explorer-index.js"></script>
+  <script src="./static/js/question_card.js"></script>
+
+  <script src="./static/js/leaderboard_testmini.js"></script>  
+  <script src="./data/results/output_folders.js" defer></script>
+  <script src="./data/results/model_scores.js" defer></script>
+
+  <script src="./visualizer/data/data_public.js" defer></script>
+</head>
+<body>
+
+  
+
+
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title is-bold">
+            <img src="static/images/icon.png" style="width:1.6em;vertical-align: middle" alt="Logo"/>
+            <span class="video-niah" style="vertical-align: middle">VideoNIAH</span>
+            </h1>
+          <h2 class="subtitle is-3 publication-subtitle", style="margin-bottom: 20px;">
+            Needle In A Video Haystack: A Scalable Synthetic <br> Framework for Benchmarking Video MLLMs
+          </h2>
+          
+          <div class="is-size-5 publication-authors", style="width: 80%; margin: 20px auto;", >
+            <span class="author-block">Zijia Zhao<sup style="color:#18acfb">1</sup>,</span>
+            <span class="author-block">Haoyu Lu<sup style="color:#6fbf73;">2</sup>,</span>
+            <span class="author-block">Yuqi Huo<sup style="color:#ed4b82;">3</sup>,</span>
+            <span class="author-block">Yifan Du<sup style="color:#6fbf73;">2</sup>,</span>
+            <span class="author-block">Tongtian Yue<sup style="color:#18acfb">1</sup>,</span>
+            <span class="author-block">Longteng Guo<sup style="color:#18acfb">1</sup>,</span>
+            <span class="author-block">Bingning Wang<sup style="color:#ed4b82;">3</sup>,</span>
+            <span class="author-block">Weipeng Chen<sup style="color:#ed4b82;">3</sup>,</span>
+            <span class="author-block">Jing Liu<sup style="color:#18acfb">1</sup>,</span>
+    
+        </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup style="color:#18acfb;">1</sup>CASIA,</span>
+            <span class="author-block"><sup style="color:#6fbf73">2</sup>RUC,</span>
+            <span class="author-block"><sup style="color:#ed4b82">3</sup>Baichuan</span>
+            
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                <!-- <a href="https://lupantech.github.io/papers/arxiv23_mathvista.pdf"
+                   class="external-link button is-normal is-rounded is-dark"> -->
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/joez17/VideoNIAH"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://github.com/joez17/VideoNIAH"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <!-- <i class="far fa-images"></i> -->
+                      <p style="font-size:18px">📊</p>
+                  </span>
+                  <span>Dataset</span>
+                </a>
+              </span> 
+              <!-- Leaderboard Link. -->
+              <span class="link-block">
+                <a href="#leaderboard"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <p style="font-size:18px">🏆</p>
+                  </span>
+                  <span>Leaderboard</span>
+                </a>
+              </span>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container" style="margin-bottom: 2vh;">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Introduction</h2>
+        <div class="content has-text-justified">
+
+            We propose <strong>VideoNIAH (Video Needle In A Haystack)</strong>, a benchmark construction framework through synthetic video generation. 
+            VideoNIAH decouples test video content from their query-responses by inserting unrelated image/text 'needles' into original videos. It generates annotations solely from these needles, ensuring diversity in video sources and a variety of query-responses.
+            Additionally, by inserting multiple needles, VideoNIAH rigorously evaluates the temporal understanding capabilities of models.
+            VideoNIAH is <strong>a simple yet highly scalable benchmark construction framework</strong>, and we believe it will inspire future video benchmark works!
+
+            We utilize VideoNIAH to compile a video benchmark <strong>VNBench</strong>, including tasks such as retrieval, ordering, and counting. VNBench contains 1350 samples in total.
+            VNBench can efficiently evaluate the fine-grained understanding ability and spatio-temporal modeling ability of a video model, while also supporting the long-context evaluation. 
+            
+
+            
+            
+
+          </div>
+      </div>
+    </div>
+
+</div>
+</section>
+
+<section class="section">
+  <div class="container">
+    
+    <div class="columns is-centered">
+      <div class="column is-full has-text-centered content">
+
+        <h2 class="title is-3" id="leaderboard">Leaderboard</h2>
+        <div class="content">
+          <p class="mt-3">
+            <strong>VNBench</strong> contains 3 task: <strong>Retrieval</strong>, <strong>Ordering</strong> and <strong>Counting</strong>. Each task is divided into 3 sub-tasks according to the needle type and task difficulty.
+          </p>
+
+          <table  id="results" style="margin-left: auto; margin-right: auto;">
+
+          <thead>
+            <tr class="header-row">
+                <th rowspan="2" style="text-align: center; vertical-align: middle; color: black;">Video MLLMs</th>
+                <th colspan="4" style="text-align: center; vertical-align: middle; color: black;">Retrieval</th>
+                <th colspan="4" style="text-align: center; vertical-align: middle; color: black;">Ordering</th>
+                <th colspan="4" style="text-align: center; vertical-align: middle; color: black;">Counting</th>
+                <th rowspan="2" style="text-align: center; vertical-align: middle; color: black;">Overall</th>
+            </tr>
+            <tr class="header-row">
+                <th style="text-align: center; vertical-align: middle; color: black;">E</th>
+                <th style="text-align: center; vertical-align: middle; color: black;">I-1</th>
+                <th style="text-align: center; vertical-align: middle; color: black;">I-2</th>
+                <th style="text-align: center; vertical-align: middle; color: black;">Avg.</th>
+                <th style="text-align: center; vertical-align: middle; color: black;">E</th>
+                <th style="text-align: center; vertical-align: middle; color: black;">I-1</th>
+                <th style="text-align: center; vertical-align: middle; color: black;">I-2</th>
+                <th style="text-align: center; vertical-align: middle; color: black;">Avg.</th>
+                <th style="text-align: center; vertical-align: middle; color: black;">E-1</th>
+                <th style="text-align: center; vertical-align: middle; color: black;">E-2</th>
+                <th style="text-align: center; vertical-align: middle; color: black;">I</th>
+                <th style="text-align: center; vertical-align: middle; color: black;">Avg.</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td><a href="https://aistudio.google.com/">Gemini 1.5 Pro *</a></td>
+                  <td>100.0</td>
+                  <td>96.0</td>
+                  <td>76.0</td>
+                  <td>90.7</td>
+                  <td>90.7</td>
+                  <td>95.3</td>
+                  <td>32.7</td>
+                  <td>72.9</td>
+                  <td>60.7</td>
+                  <td>7.3</td>
+                  <td>42.0</td>
+                  <td>36.7</td>
+                  <td>66.7</td>
+              </tr>
+              <tr>
+                  <td><a href="https://chatgpt.com/">GPT-4o *</a></td>
+                  <td>100.0</td>
+                  <td>98.0</td>
+                  <td>87.3</td>
+                  <td>95.3</td>
+                  <td>88.4</td>
+                  <td>86.6</td>
+                  <td>45.2</td>
+                  <td>73.4</td>
+                  <td>36.8</td>
+                  <td>0.0</td>
+                  <td>36.1</td>
+                  <td>24.5</td>
+                  <td>64.4</td>
+              </tr>
+              <tr>
+                  <td><a href="https://chatgpt.com/">GPT-4-Turbo *</a></td>
+                  <td>100.0</td>
+                  <td>99.3</td>
+                  <td>82.0</td>
+                  <td>93.7</td>
+                  <td>42.6</td>
+                  <td>22.8</td>
+                  <td>23.0</td>
+                  <td>29.5</td>
+                  <td>37.6</td>
+                  <td>0.0</td>
+                  <td>32.4</td>
+                  <td>23.3</td>
+                  <td>48.9</td>
+              </tr>
+              <!-- <tr>
+                  <td colspan="14" class="open-source">Open-source MLLMs</td>
+              </tr> -->
+              <tr>
+                <td><a href="https://github.com/TencentARC/ST-LLM">ST-LLM</a></td>
+                <td>58.0</td>
+                <td>64.7</td>
+                <td>31.3</td>
+                <td>51.3</td>
+                <td>0.0</td>
+                <td>0.0</td>
+                <td>0.0</td>
+                <td>0.0</td>
+                <td>21.3</td>
+                <td>1.3</td>
+                <td>27.3</td>
+                <td>16.7</td>
+                <td>22.7</td>
+              </tr>
+              <tr>
+                <td><a href="https://github.com/LLaVA-VL/LLaVA-NeXT">LLaVA-NeXT-Video</a></td>
+                <td>56.7</td>
+                <td>56.7</td>
+                <td>19.3</td>
+                <td>44.2</td>
+                <td>0.7</td>
+                <td>0.0</td>
+                <td>0.7</td>
+                <td>0.4</td>
+                <td>6.7</td>
+                <td>14.6</td>
+                <td>25.3</td>
+                <td>15.5</td>
+                <td>20.1</td>
+              </tr>
+              <tr>
+                  <td><a href="https://github.com/OpenGVLab/Ask-Anything/tree/main/video_chat2">VideoChat2</a></td>
+                  <td>43.4</td>
+                  <td>40.0</td>
+                  <td>14.6</td>
+                  <td>32.7</td>
+                  <td>0.0</td>
+                  <td>0.0</td>
+                  <td>1.3</td>
+                  <td>0.4</td>
+                  <td>3.3</td>
+                  <td>0.7</td>
+                  <td>8.0</td>
+                  <td>4.0</td>
+                  <td>12.4</td>
+              </tr>
+              <tr>
+                <td><a href="https://github.com/PKU-YuanGroup/Video-LLaVA">Video-LLaVA</a></td>
+                <td>26.0</td>
+                <td>28.0</td>
+                <td>17.3</td>
+                <td>23.8</td>
+                <td>0.7</td>
+                <td>0.7</td>
+                <td>2.0</td>
+                <td>1.1</td>
+                <td>16.7</td>
+                <td>0.7</td>
+                <td>20.0</td>
+                <td>12.4</td>
+                <td>12.4</td>
+              </tr>
+              <tr>
+                  <td><a href="https://github.com/dvlab-research/LLaMA-VID">LLaMA-VID</a></td>
+                  <td>28.0</td>
+                  <td>28.0</td>
+                  <td>19.3</td>
+                  <td>25.1</td>
+                  <td>0.7</td>
+                  <td>0.0</td>
+                  <td>0.0</td>
+                  <td>0.2</td>
+                  <td>4.0</td>
+                  <td>2.7</td>
+                  <td>14.7</td>
+                  <td>7.1</td>
+                  <td>10.8</td>
+              </tr>
+              <tr>
+                <td><a href="https://github.com/DAMO-NLP-SG/Video-LLaMA">Video-LLaMA2</a></td>
+                <td>1.2</td>
+                <td>26.0</td>
+                <td>6.0</td>
+                <td>11.1</td>
+                <td>0.0</td>
+                <td>0.0</td>
+                <td>0.0</td>
+                <td>0.0</td>
+                <td>2.0</td>
+                <td>4.7</td>
+                <td>0.7</td>
+                <td>2.4</td>
+                <td>4.5</td>
+            </tr>
+            <tr>
+              <td><a href="https://github.com/mbzuai-oryx/Video-ChatGPT">VideoChatGPT</a></td>
+              <td>4.7</td>
+              <td>4.7</td>
+              <td>0.7</td>
+              <td>3.3</td>
+              <td>2.7</td>
+              <td>11.3</td>
+              <td>0.0</td>
+              <td>4.7</td>
+              <td>2.0</td>
+              <td>4.0</td>
+              <td>6.7</td>
+              <td>4.2</td>
+              <td>4.1</td>
+            </tr>
+
+
+
+
+          </tbody>          
+
+        </table> 
+
+        <p style="margin-top: -20px;">
+          
+          * indicates proprietary models
+        </p>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- DATASET SECTION -->
+<section class="hero is-light is-small">
+  <div class="hero-body has-text-centered">
+  <h1 class="title is-1 mathvista_other">
+    <span class="mathvista_other" style="vertical-align: middle">Benchmark</span>
+  </h1>
+  </div>
+</section>
+            
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths" style="width: 100%;">
+        <h2 class="title is-3">Data Examples</h2>
+        <div class="content has-text-justified">
+          <!-- <p style="text-align: center;", class="mt-3"><strong>All data are newly collected and annotated by humans, not from any existing video dataset.</strong>
+          </p> -->
+
+        <div id="results-carousel" class="carousel results-carousel">  
+          
+            <div class="content has-text-centered">
+              <img src="static/images/task_sample_images/1.png" style="width: 70%;"/>
+            </div>
+          
+            <div class="content has-text-centered">
+              <img src="static/images/task_sample_images/2.png" style="width: 70%;"/>
+            </div>
+            <div class="content has-text-centered">
+              <img src="static/images/task_sample_images/3.png" style="width: 70%;"/>
+            </div>
+          
+            <div class="content has-text-centered">
+              <img src="static/images/task_sample_images/4.png" style="width: 70%;"/>
+            </div>
+            <div class="content has-text-centered">
+              <img src="static/images/task_sample_images/5.png" style="width: 70%;"/>
+            </div>
+          
+            <div class="content has-text-centered">
+              <img src="static/images/task_sample_images/6.png" style="width: 70%;"/>
+            </div>
+            <div class="content has-text-centered">
+              <img src="static/images/task_sample_images/7.png" style="width: 70%;"/>
+            </div>
+          
+            <div class="content has-text-centered">
+              <img src="static/images/task_sample_images/8.png" style="width: 70%;"/>
+            </div>
+            <div class="content has-text-centered">
+              <img src="static/images/task_sample_images/9.png" style="width: 70%;"/>
+            </div>
+        </div>
+
+          
+        </div>
+      </div> 
+
+        </div>
+      </div>
+    </div>
+    
+</section>
+
+<!-- RESULTS SECTION -->
+<section class="hero is-light is-small">
+  <div class="hero-body has-text-centered">
+    <h1 class="title is-1 mathvista_other">Analysis Results</h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <div class="columns is-centered m-6">
+      <div class="column is-full has-text-centered content">
+        <h2 class="title is-3">Different Haystack Length</h2>
+          <div class="box m-5">
+            <div class="content has-text-centered">
+              <img src="static/images/haystack_length.png" alt="grade-lv" width="100%"/>
+              <p>Task performance on different video durations. We divide all VNBench videos into 3 splits: short(10-30s), medium(30-60s) and long(60-180s).</p>
+            </div>
+          </div>
+      </div>
+    </div>
+
+    <div class="columns is-centered m-6">
+      <div class="column is-full has-text-centered content">
+        <h2 class="title is-3">NIAH Visualization on Different Models</h2>
+
+          <div class="box m-5">
+            <div class="content has-text-centered">
+              <img src="static/images/niah_visualization.png" alt="" width="100%"/>
+              <p>We fix the video haystack and query-response pair in this position test on Retrieval-I-1 task, just modifying the haystack length and needle position.</p>
+            </div>
+          </div>
+
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+</section>
+<section class="hero is-light is-small">
+  <div class="hero-body has-text-centered">
+    <h1 class="title is-1 mathvista_other" id="citation">Citation</h1>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <pre><code>@article{zhao2024videoniah,
+      title={Needle In A Video Haystack: A Scalable  Synthetic Framework for Benchmarking Video MLLMs},
+      author={Zhao, Zijia and Lu, Haoyu and Huo, Yuqi and Du, Yifan and Yue, Tongtian and Guo, Longteng and Wang, Bingning and Chen, Weipeng and Liu, Jing},
+      journal={arXiv preprint},
+      year={2024}
+    }
+</code></pre>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container" style="width: 60%;">
+  <style>
+      pre {
+        background-color: #f4f4f4;
+        padding: 5px; /* 调整padding为5px */
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        overflow-x: auto; /* 允许水平滚动 */
+    }
+    code {
+        font-family: Consolas, "Courier New", monospace;
+        color: #d63384; /* 代码文本颜色 */
+    }
+  </style>
+
+
+  </div>
+</section>
+
+
+<footer class="footer">
+  <!-- <div class="container"> -->
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p style="text-align: center;">
+            This website is adapted from <a href="https://mathvista.github.io/">MathVista</a>, licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  <!-- </div> -->
+</footer>
+
+</body>
+</html>
+
